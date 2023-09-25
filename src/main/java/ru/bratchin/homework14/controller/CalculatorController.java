@@ -1,29 +1,24 @@
 package ru.bratchin.homework14.controller;
 
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.bratchin.homework14.service.CalculatorService;
+import ru.bratchin.homework14.service.CalculatorMessageService;
 
 @RestController
 @RequestMapping("/calculator")
-@Validated
 public class CalculatorController {
 
-    private final CalculatorService service;
+    private final CalculatorMessageService service;
 
-    private static final String NFEMessage = "Неверные параметры!";
-    private static final String formatMessage = "%d %c %d = %d";
-
-    public CalculatorController(CalculatorService service) {
+    public CalculatorController(CalculatorMessageService service) {
         this.service = service;
     }
 
     @GetMapping
     public String welcome() {
-        return "Добро пожаловать в калькулятор!";
+        return service.welcome();
     }
 
     @GetMapping("/plus")
@@ -31,13 +26,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        try {
-            int param1 = Integer.parseInt(a);
-            int param2 = Integer.parseInt(b);
-            return String.format(formatMessage, param1, '+', param2, service.plus(param1, param2));
-        } catch (NumberFormatException e) {
-            return NFEMessage;
-        }
+        return service.plus(a, b);
     }
 
     @GetMapping("/minus")
@@ -45,13 +34,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        try {
-            int param1 = Integer.parseInt(a);
-            int param2 = Integer.parseInt(b);
-            return String.format(formatMessage, param1, '-', param2, service.minus(param1, param2));
-        } catch (NumberFormatException e) {
-            return NFEMessage;
-        }
+        return service.minus(a, b);
     }
 
     @GetMapping("/multiply")
@@ -59,13 +42,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        try {
-            int param1 = Integer.parseInt(a);
-            int param2 = Integer.parseInt(b);
-            return String.format(formatMessage, param1, '*', param2, service.multiply(param1, param2));
-        } catch (NumberFormatException e) {
-            return NFEMessage;
-        }
+        return service.multiply(a, b);
     }
 
     @GetMapping("/divide")
@@ -73,15 +50,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        try {
-            int param1 = Integer.parseInt(a);
-            int param2 = Integer.parseInt(b);
-            return String.format(formatMessage, param1, '/', param2, service.divide(param1, param2));
-        } catch (NumberFormatException e) {
-            return NFEMessage;
-        } catch (ArithmeticException e) {
-            return "Ошибка! Деление на 0!";
-        }
+        return service.divide(a, b);
     }
 
 }

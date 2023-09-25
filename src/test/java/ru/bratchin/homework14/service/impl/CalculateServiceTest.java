@@ -1,15 +1,16 @@
-package ru.bratchin.homework14.service;
+package ru.bratchin.homework14.service.impl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import ru.bratchin.homework14.service.CalculateService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-class CalculatorServiceTest {
+class CalculateServiceTest {
 
-    private final CalculatorService service = new CalculatorService();
+    private final CalculateService<Integer> service = new CalculateIntegerService();
 
     @ParameterizedTest(name = "plus[{index}]: param1 = {0} param2 = {1} expected = {2}")
     @CsvSource(value = {

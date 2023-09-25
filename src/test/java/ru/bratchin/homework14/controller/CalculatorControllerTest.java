@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.bratchin.homework14.service.CalculatorService;
+import ru.bratchin.homework14.service.impl.CalculateIntegerService;
+import ru.bratchin.homework14.service.impl.CalculatorMessageServiceImpl;
 
 import java.lang.reflect.Field;
 
@@ -19,10 +20,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//Тестируем CalculatorController
 @WebMvcTest(CalculatorController.class)
 //Достать из контекста сервис
-@Import(CalculatorService.class)
+@Import({CalculatorMessageServiceImpl.class, CalculateIntegerService.class})
 class CalculatorControllerTest {
 
     @Autowired
@@ -127,7 +127,7 @@ class CalculatorControllerTest {
 
         @BeforeAll
         public static void setup() throws NoSuchFieldException, IllegalAccessException {
-            Field field = CalculatorController.class.getDeclaredField("NFEMessage");
+            Field field = CalculatorMessageServiceImpl.class.getDeclaredField("NFEMessage");
             field.setAccessible(true);
             errorParamMessage = String.valueOf(field.get(null));
         }

@@ -18,8 +18,8 @@ class CalculateServiceTest {
             "15, -1, 14",
             "3, 0, 3"
     })
-    void plus(int param1, int param2, int expected) {
-        int result = service.plus(param1, param2);
+    void plus(Integer param1, Integer param2, Integer expected) {
+        Integer result = service.plus(param1, param2);
 
         assertThat(result).isEqualTo(expected);
     }
@@ -30,8 +30,8 @@ class CalculateServiceTest {
             "15, -1, 16",
             "3, 0, 3"
     })
-    void minus(int param1, int param2, int expected) {
-        int result = service.minus(param1, param2);
+    void minus(Integer param1, Integer param2, Integer expected) {
+        Integer result = service.minus(param1, param2);
 
         assertThat(result).isEqualTo(expected);
     }
@@ -42,8 +42,8 @@ class CalculateServiceTest {
             "15, -1, -15",
             "3, 0, 0"
     })
-    void multiply(int param1, int param2, int expected) {
-        int result = service.multiply(param1, param2);
+    void multiply(Integer param1, Integer param2, Integer expected) {
+        Integer result = service.multiply(param1, param2);
 
         assertThat(result).isEqualTo(expected);
     }
@@ -54,8 +54,8 @@ class CalculateServiceTest {
             "15, -1, -15",
             "3, 2, 1"
     })
-    void divide(int param1, int param2, int expected) {
-        int result = service.divide(param1, param2);
+    void divide(Integer param1, Integer param2, Integer expected) {
+        Integer result = service.divide(param1, param2);
 
         assertThat(result).isEqualTo(expected);
     }

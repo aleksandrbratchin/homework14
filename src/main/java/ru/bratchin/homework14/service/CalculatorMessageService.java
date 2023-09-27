@@ -2,12 +2,12 @@ package ru.bratchin.homework14.service;
 
 
 public abstract class CalculatorMessageService<T extends Number> {
-    protected final CalculateService<T> service;
+    protected final CalculateService<T> calculateService;
 
     protected static final String NFEMessage = "Неверные параметры!";
 
-    public CalculatorMessageService(CalculateService<T> service) {
-        this.service = service;
+    public CalculatorMessageService(CalculateService<T> calculateService) {
+        this.calculateService = calculateService;
     }
 
     public String welcome() {
@@ -17,7 +17,7 @@ public abstract class CalculatorMessageService<T extends Number> {
     public String plus(String a, String b) {
         try {
             T[] params = convert(a, b);
-            return params[0] + " + " + params[1] + " = " + service.plus(params[0], params[1]);
+            return params[0] + " + " + params[1] + " = " + calculateService.plus(params[0], params[1]);
         } catch (NumberFormatException e) {
             return NFEMessage;
         }
@@ -26,7 +26,7 @@ public abstract class CalculatorMessageService<T extends Number> {
     public String minus(String a, String b) {
         try {
             T[] params = convert(a, b);
-            return params[0] + " - " + params[1] + " = " + service.minus(params[0], params[1]);
+            return params[0] + " - " + params[1] + " = " + calculateService.minus(params[0], params[1]);
         } catch (NumberFormatException e) {
             return NFEMessage;
         }
@@ -35,7 +35,7 @@ public abstract class CalculatorMessageService<T extends Number> {
     public String multiply(String a, String b) {
         try {
             T[] params = convert(a, b);
-            return params[0] + " * " + params[1] + " = " + service.multiply(params[0], params[1]);
+            return params[0] + " * " + params[1] + " = " + calculateService.multiply(params[0], params[1]);
         } catch (NumberFormatException e) {
             return NFEMessage;
         }
@@ -44,7 +44,7 @@ public abstract class CalculatorMessageService<T extends Number> {
     public String divide(String a, String b) {
         try {
             T[] params = convert(a, b);
-            return params[0] + " / " + params[1] + " = " + service.divide(params[0], params[1]);
+            return params[0] + " / " + params[1] + " = " + calculateService.divide(params[0], params[1]);
         } catch (NumberFormatException e) {
             return NFEMessage;
         } catch (ArithmeticException e) {

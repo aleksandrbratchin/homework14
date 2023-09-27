@@ -11,15 +11,15 @@ import ru.bratchin.homework14.service.impl.CalculatorMessageIntegerService;
 @RequestMapping("/calculator")
 public class CalculatorController {
 
-    private final CalculatorMessageService<?> service;
+    private final CalculatorMessageService<?> messageService;
 
-    public CalculatorController(CalculatorMessageIntegerService service) {
-        this.service = service;
+    public CalculatorController(CalculatorMessageIntegerService messageService) {
+        this.messageService = messageService;
     }
 
     @GetMapping
     public String welcome() {
-        return service.welcome();
+        return messageService.welcome();
     }
 
     @GetMapping("/plus")
@@ -27,7 +27,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        return service.plus(a, b);
+        return messageService.plus(a, b);
     }
 
     @GetMapping("/minus")
@@ -35,7 +35,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        return service.minus(a, b);
+        return messageService.minus(a, b);
     }
 
     @GetMapping("/multiply")
@@ -43,7 +43,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        return service.multiply(a, b);
+        return messageService.multiply(a, b);
     }
 
     @GetMapping("/divide")
@@ -51,7 +51,7 @@ public class CalculatorController {
             @RequestParam(name = "num1") String a,
             @RequestParam(name = "num2") String b
     ) {
-        return service.divide(a, b);
+        return messageService.divide(a, b);
     }
 
 }

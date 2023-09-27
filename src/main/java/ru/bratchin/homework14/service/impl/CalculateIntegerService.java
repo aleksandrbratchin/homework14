@@ -19,7 +19,6 @@ public class CalculateIntegerService implements CalculateService<Integer> {
     }
     @Override
     public Integer divide(Integer a, Integer b) {
-        if (b == 0) throw new ArithmeticException();
         return a / b;
     }
 

@@ -7,8 +7,8 @@ import ru.bratchin.homework14.service.CalculatorMessageService;
 @Service
 public class CalculatorMessageIntegerService extends CalculatorMessageService<Integer> {
     
-    public CalculatorMessageIntegerService(CalculateService<Integer> service) {
-        super(service);
+    public CalculatorMessageIntegerService(CalculateService<Integer> calculateService) {
+        super(calculateService);
     }
 
     @Override
